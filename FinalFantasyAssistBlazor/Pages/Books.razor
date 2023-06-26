@@ -1,0 +1,26 @@
+@page "/books"
+
+@using FinalFantasyAssistBlazor.Shared.Entities
+
+@inject HttpClient Http;
+
+<h3>Books @booksCountTitle</h3>
+
+@code {
+    private IEnumerable<Book>? books;
+    private string? error;
+    private string? booksCountTitle;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            books = await Http.GetFromJsonAsync<IEnumerable<Book>>("books");
+            booksCountTitle = books == null ? "(0)" : $"({books.Count()})";
+        }
+        catch(Exception ex)
+        {
+            error = ex.Message;
+        }
+    }
+}
