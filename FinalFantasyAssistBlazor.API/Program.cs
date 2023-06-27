@@ -12,7 +12,7 @@ var options = new SupabaseOptions
     AutoConnectRealtime = true
 };
 
-builder.Services.AddScoped(provider => new Client(url, key, options));
+builder.Services.AddScoped(_ => new Client(url, key, options));
 
 builder.Services.AddControllers();
 
@@ -24,7 +24,7 @@ var app = builder.Build();
 app.UseCors(cors => cors
     .AllowAnyMethod()
     .AllowAnyHeader()
-    .SetIsOriginAllowed(origin => true)
+    .SetIsOriginAllowed(_ => true)
     .AllowCredentials()
 );
 

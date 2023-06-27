@@ -6,6 +6,11 @@
 
 <h3>Books @booksCountTitle</h3>
 
+@if (!string.IsNullOrWhiteSpace(error))
+{
+    <p>@error</p>
+}
+
 @code {
     private IEnumerable<Book>? books;
     private string? error;
