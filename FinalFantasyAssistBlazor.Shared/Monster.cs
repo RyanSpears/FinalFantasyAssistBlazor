@@ -1,20 +1,19 @@
 namespace FinalFantasyAssistBlazor.Shared.Entities;
 
-public class Book
+public class Monster
 {
     public int Id { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
-    public string Title { get; set; }
+    public string Name { get; set; }
 
-    public string Number { get; set; }
+    public int Skill { get; set; }
 
-    public override bool Equals(object obj)
-    {
-        return obj is Book book && Id == book.Id;
-    }
+    public int Stamina { get; set; }
 
+    public int BookId { get; set; }
+    
     public override int GetHashCode()
     {
         return HashCode.Combine(Id);
