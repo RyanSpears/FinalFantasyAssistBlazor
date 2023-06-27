@@ -1,4 +1,4 @@
-namespace FinalFantasyAssistBlazor.Shared.Entities;
+namespace FinalFantasyAssistBlazor.Shared;
 
 public class Monster
 {
