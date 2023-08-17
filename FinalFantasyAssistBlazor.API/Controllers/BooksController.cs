@@ -11,10 +11,10 @@ public class BooksController : ControllerBase
 {
     private readonly Client _db;
 
-    public BooksController(Client Db)
+    public BooksController(Client db)
     {
-        _db = Db;
-        Db.InitializeAsync().Wait();
+        _db = db;
+        db.InitializeAsync().Wait();
     }
     
     [HttpGet(Name = "GetBooks")]

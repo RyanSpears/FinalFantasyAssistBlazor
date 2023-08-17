@@ -30,6 +30,7 @@ public class MonstersController : ControllerBase
             Name = b.Name,
             Skill = b.Skill,
             Stamina = b.Stamina,
+            BookId = b.BookId
         });
 
         return monsters.ToList();
