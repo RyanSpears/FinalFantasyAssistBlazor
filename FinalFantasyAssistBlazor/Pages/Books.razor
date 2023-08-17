@@ -11,6 +11,33 @@
     <p>@error</p>
 }
 
+@if (books == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>No.</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var book in books)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Number</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
 @code {
     private IEnumerable<Book>? books;
     private string? error;

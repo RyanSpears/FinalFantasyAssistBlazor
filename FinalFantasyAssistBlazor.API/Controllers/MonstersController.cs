@@ -1,4 +1,5 @@
 using FinalFantasyAssistBlazor.API.Models;
+using FinalFantasyAssistBlazor.Shared;
 using FinalFantasyAssistBlazor.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Supabase;

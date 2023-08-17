@@ -1,0 +1,58 @@
+@page "/monsters"
+
+@inject HttpClient Http;
+
+<h3>Monsters @monstersCountTitle</h3>
+
+@if (!string.IsNullOrWhiteSpace(error))
+{
+    <p>@error</p>
+}
+
+@if (monsters == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Monster</th>
+            <th>Skill</th>
+            <th>Stamina</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var monster in monsters)
+        {
+            <tr>
+                <td>@monster.Name</td>
+                <td>@monster.Skill</td>
+                <td>@monster.Stamina</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<Monster>? monsters;
+    private string? error;
+    private string? monstersCountTitle;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            monsters = await Http.GetFromJsonAsync<IEnumerable<Monster>>("monsters");
+            monstersCountTitle = monsters == null ? "(0)" : $"({monsters.Count()})";
+        }
+        catch(Exception ex)
+        {
+            error = ex.Message;
+        }
+    }
+}
